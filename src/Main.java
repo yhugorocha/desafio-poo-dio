@@ -1,4 +1,6 @@
+import br.com.dio.desafio.dominio.Bootcamp;
 import br.com.dio.desafio.dominio.Curso;
+import br.com.dio.desafio.dominio.Dev;
 import br.com.dio.desafio.dominio.Mentoria;
 
 import java.time.LocalDate;
@@ -21,9 +23,37 @@ public class Main {
         mentoria.setDescricao("descriçao mentoria de java");
         mentoria.setData(LocalDate.now());
 
-        System.out.println(curso1);
-        System.out.println(curso2);
-        System.out.println(mentoria);
+    //    System.out.println(curso1);
+    //    System.out.println(curso2);
+    //    System.out.println(mentoria);
+
+        Bootcamp bootcamp = new Bootcamp();
+        bootcamp.setNome("Bootcamp Java Development");
+        bootcamp.setDescricao("Conteudos sobre a linguagem java");
+        bootcamp.getConteudos().add(curso1);
+        bootcamp.getConteudos().add(curso2);
+        bootcamp.getConteudos().add(mentoria);
+
+        Dev devHugo = new Dev();
+        devHugo.setNome("Hugo");
+        devHugo.increverBootCamp(bootcamp);
+
+        System.out.println("Conteudos Incritos devHugo:"+ devHugo.getConteudosIncritos());
+        devHugo.progredir();
+        System.out.println("Conteudos Concluidos devHugo:"+ devHugo.getConteudosConcluidos());
+        System.out.println("XP: "+devHugo.calcularTotalXp());
+
+        Dev devFran = new Dev();
+        devFran.setNome("Fran");
+        devFran.increverBootCamp(bootcamp);
+
+        System.out.println("Conteudos Incritos devFran:"+ devFran.getConteudosIncritos());
+        devFran.progredir();
+        devFran.progredir();
+        System.out.println("Conteudos Concluidos devFran:"+ devFran.getConteudosConcluidos());
+        System.out.println("XP: "+devFran.calcularTotalXp());
+
+
 
     }
 }
